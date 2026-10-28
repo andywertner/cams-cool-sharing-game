@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cam's Cool Sharing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="top-bar">
+      <div class="title-block">
+        <h1>Cam's Cool Sharing Game</h1>
+        <p class="credit">Made from a plan by Cameron, grade 8.</p>
+      </div>
+      <div class="hud">
+        <div class="timer-box" aria-live="polite">
+          <span class="hud-label">Time</span>
+          <span id="timer" class="hud-value">0.0s</span>
+        </div>
+        <div class="kindness-box">
+          <span class="hud-label">Kindness</span>
+          <div class="kindness-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="kindnessTrack">
+            <div id="kindnessFill" class="kindness-fill"></div>
+          </div>
+        </div>
+        <div class="zoom-box">
+          <span class="hud-label">Zoom</span>
+          <div class="zoom-row" id="zoomRow"></div>
+        </div>
+      </div>
+    </header>
+
+    <p class="prompt" id="prompt">Share the toys!</p>
+
+    <main class="play-area">
+      <section class="children-area" aria-label="Children">
+        <h2 class="section-title">Friends</h2>
+        <div id="childrenRow" class="children-row"></div>
+      </section>
+
+      <section class="toys-area" aria-label="Toys to share">
+        <h2 class="section-title">Toys to share</h2>
+        <div id="toysRow" class="toys-row"></div>
+        <p class="hint" id="hint">Drag a toy to a friend, or tap a toy then tap a friend.</p>
+      </section>
+    </main>
+
+    <section class="toybox" aria-label="Toy box">
+      <h2 class="section-title">Toy box</h2>
+      <div class="toybox-controls">
+        <button type="button" class="big-btn" id="btnAdd">Add a toy</button>
+        <button type="button" class="big-btn" id="btnRename">Change a toy's name</button>
+        <button type="button" class="big-btn" id="btnRemove">Take a toy away</button>
+        <button type="button" class="big-btn secondary" id="btnReset">Reset toys</button>
+      </div>
+      <div id="toyboxList" class="toybox-list"></div>
+    </section>
+
+    <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+
+    <div id="winOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+      <div class="overlay-card">
+        <h2 id="winTitle">You shared with kindness!</h2>
+        <p id="winMessage">Everyone has a toy. Great job sharing!</p>
+        <p id="winTime" class="win-time"></p>
+        <button type="button" class="big-btn" id="btnPlayAgain">Play again</button>
+      </div>
+    </div>
+
+    <div id="modal" class="overlay hidden" role="dialog" aria-modal="true">
+      <div class="overlay-card modal-card">
+        <h2 id="modalTitle">Toy box</h2>
+        <p id="modalBody"></p>
+        <div id="modalChoices" class="modal-choices"></div>
+        <label id="modalLabel" class="modal-label hidden" for="modalInput">Name</label>
+        <input id="modalInput" class="modal-input hidden" type="text" maxlength="18" autocomplete="off">
+        <div class="modal-actions">
+          <button type="button" class="big-btn secondary" id="modalCancel">Cancel</button>
+          <button type="button" class="big-btn" id="modalOk">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
