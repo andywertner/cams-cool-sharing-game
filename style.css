@@ -625,3 +625,104 @@ body {
 .shirt-purple { background: #9b5de5; }
 .shirt-orange { background: #f77f00; }
 .shirt-teal { background: #00b4d8; }
+
+.feedback-dock {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 50;
+  width: 232px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.feedback-panel {
+  width: 232px;
+  margin: 0 0 6px;
+  padding: 6px 8px 8px;
+  background: #fff8e7;
+  border: 3px solid #16324f;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 rgba(31, 42, 55, 0.18);
+}
+
+.feedback-panel label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 3px 0 2px;
+}
+
+.feedback-panel input,
+.feedback-panel select,
+.feedback-panel textarea {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border: 2px solid #16324f;
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+
+.feedback-panel textarea {
+  height: 36px;
+  resize: none;
+}
+
+.feedback-note {
+  min-height: 14px;
+  margin: 4px 0 0;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.feedback-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.feedback-actions button,
+.feedback-open {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border: 2px solid #16324f;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.feedback-actions button {
+  min-height: 30px;
+  padding: 3px 10px;
+  font-size: 14px;
+  background: #4cc9f0;
+}
+
+.feedback-actions button:disabled {
+  background: #c5d0d8;
+  cursor: default;
+}
+
+#feedbackClose {
+  background: #e8eef5;
+}
+
+.feedback-open {
+  min-height: 34px;
+  padding: 4px 12px;
+  font-size: 15px;
+  background: #fff8e7;
+}
+
+.feedback-frame {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}

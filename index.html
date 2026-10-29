@@ -81,7 +81,77 @@
         </div>
       </div>
     </div>
+
+    <div class="feedback-dock">
+      <form id="feedbackForm" class="feedback-panel hidden" method="post" action="https://script.google.com/macros/s/AKfycbzQSZ0sy15Q08nF2OXAw9d5Chn1ppKoobJqw5vOj5w-lRr4JxsxtUxXxRc9m7TIU6Cm/exec" target="feedbackFrame" autocomplete="off">
+        <input type="hidden" name="app" value="Cam's Cool Sharing Game">
+        <label for="feedbackName">Name</label>
+        <input id="feedbackName" name="name" type="text" maxlength="40" autocomplete="off">
+        <label for="feedbackGrade">Your grade</label>
+        <select id="feedbackGrade" name="grade">
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+        <label for="feedbackText">Feedback</label>
+        <textarea id="feedbackText" name="feedback" rows="2" maxlength="240"></textarea>
+        <p id="feedbackNote" class="feedback-note" aria-live="polite"></p>
+        <div class="feedback-actions">
+          <button type="button" id="feedbackClose">Close</button>
+          <button type="submit" id="feedbackSubmit">Submit</button>
+        </div>
+      </form>
+      <button type="button" id="feedbackOpen" class="feedback-open">Feedback</button>
+    </div>
+    <iframe name="feedbackFrame" id="feedbackFrame" class="feedback-frame" title="Feedback"></iframe>
   </div>
   <script src="game.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById("feedbackForm");
+      var openBtn = document.getElementById("feedbackOpen");
+      var closeBtn = document.getElementById("feedbackClose");
+      var note = document.getElementById("feedbackNote");
+      var submitBtn = document.getElementById("feedbackSubmit");
+      var nameInput = document.getElementById("feedbackName");
+      var gradeInput = document.getElementById("feedbackGrade");
+      var feedbackInput = document.getElementById("feedbackText");
+      var sent = false;
+
+      openBtn.addEventListener("click", function () {
+        form.classList.remove("hidden");
+      });
+
+      closeBtn.addEventListener("click", function () {
+        form.classList.add("hidden");
+      });
+
+      form.addEventListener("submit", function (event) {
+        var nameVal = nameInput.value.replace(/^\s+|\s+$/g, "");
+        var gradeVal = gradeInput.value;
+        var feedbackVal = feedbackInput.value.replace(/^\s+|\s+$/g, "");
+        if (sent || !nameVal || !gradeVal || !feedbackVal) {
+          event.preventDefault();
+          if (!sent) {
+            note.textContent = "Fill in name, grade, and feedback.";
+          }
+          return;
+        }
+        nameInput.value = nameVal;
+        feedbackInput.value = feedbackVal;
+        sent = true;
+        note.textContent = "Thanks, that was sent.";
+        window.setTimeout(function () {
+          submitBtn.disabled = true;
+        }, 0);
+      });
+    })();
+  </script>
 </body>
 </html>
